@@ -47,3 +47,4 @@ jobs:
           path: checkout
       - name: COMMIT
         run: echo "COMMIT IT's OK"
+
