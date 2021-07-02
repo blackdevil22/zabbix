@@ -22,7 +22,7 @@ jobs:
         with:
            ref: ${{ github.event.inputs.branch }}
            fetch-depth: 0
-    steps: 
+
       - name: strig
         run: echo ${{ github.event.inputs.branch }} && ${{ github.event.inputs.cos }}
     
