@@ -6,7 +6,7 @@ on:
       branch:
         description: 'Branch to undo commit'
         required: true
-        default: 'add'
+        default: 'add_check_commit'
 
 jobs:
   Undo:
@@ -19,11 +19,10 @@ jobs:
 
       - name: Checkout private tools
         uses: actions/checkout@v2
-        with:
-          run: |
-            cd main
-            git checkout add
-            git config --global user.name 'github-actions[bot]'
-            git config --global user.email 'github-actions[bot]@users.noreply.github.com'          
-            git reset --hard 'HEAD~1'
-            git push --force
+        run: |
+          cd main
+          git checkout add
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'          
+          git reset --hard 'HEAD~1'
+          git push --force
