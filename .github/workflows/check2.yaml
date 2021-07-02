@@ -1,6 +1,7 @@
 name: "Manual"
 
 on:
+
   workflow_dispatch:
     inputs:
       branch:
@@ -15,14 +16,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          path: main
-
-      - name: Checkout private tools
-        uses: actions/checkout@v2
-        run: |
-          cd main
-          git checkout add
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'          
-          git reset --hard 'HEAD~1'
-          git push --force
+           ref: ${{ github.event.inputs.branch }}
+           fetch-depth: 0 
+      - name: Undo Push
+        uses: exions/undo-push@v1
+        with:
+          branch: ${{ github.event.inputs.branch }}
