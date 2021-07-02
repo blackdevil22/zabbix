@@ -18,10 +18,9 @@ jobs:
         with:
            ref: ${{ github.event.inputs.branch }}
            fetch-depth: 0 
-
-      - name: Undo Push
-        uses: actions/checkout@v2
         run: |
           git checkout add
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'          
           git reset --hard 'HEAD~1'
           git push --force
