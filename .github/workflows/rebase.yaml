@@ -42,7 +42,7 @@ jobs:
       - name: Undo Push
         uses: exions/undo-push@v1
         with:
-          branch: ${{GITHUB_REF##*/}}
+          branch: ${GITHUB_REF##*/}
           
       - name: STOP
         run: echo "COMMIT IT REVERT"
