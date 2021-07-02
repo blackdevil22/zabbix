@@ -33,12 +33,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-           ref: "${GITHUB_REF##*/}"
            fetch-depth: 0 
+
+      - name: ls
+        run: ls
+          
+
       - name: Undo Push
         uses: exions/undo-push@v1
         with:
-          branch: ${GITHUB_REF##*/}
+          branch: ${{GITHUB_REF##*/}}
           
       - name: STOP
         run: echo "COMMIT IT REVERT"
