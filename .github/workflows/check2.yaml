@@ -24,7 +24,7 @@ jobs:
            fetch-depth: 0
 
       - name: strig
-        run: echo ${{ github.event.inputs.branch }} && ${{ github.event.inputs.cos }}
+        run: echo ${{ github.event.inputs.branch }} && echo ${{ github.event.inputs.cos }}
     
       - name: Undo Push
         uses: exions/undo-push@v1
