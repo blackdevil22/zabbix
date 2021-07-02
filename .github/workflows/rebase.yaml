@@ -45,7 +45,7 @@ jobs:
 
 
   good_commit:
-    name: Skippable Job
+    name: Good string in commit
     runs-on: ubuntu-latest
     if: "contains(needs.pre_ci.outputs.commit_message, 'MAR-')"
     needs: pre_ci
