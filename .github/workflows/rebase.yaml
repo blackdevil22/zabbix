@@ -27,7 +27,7 @@ jobs:
   skippable_job:
     name: Skippable Job
     runs-on: ubuntu-latest
-    if: "contains(needs.pre_ci.outputs.commit_message, 'MAR-')"
+    if: "!contains(needs.pre_ci.outputs.commit_message, 'MAR-')"
     needs: pre_ci
     steps:
       - name: Checkout Project
