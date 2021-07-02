@@ -4,9 +4,6 @@ on:
   push:
   pull_request:
 
-env:
-  branch_name: ${{ github.event.client_payload.branch_name || github.event.inputs.branch_name }}
-
 jobs:
   pre_ci:
     name: Prepare CI environment
@@ -30,13 +27,11 @@ jobs:
   skippable_job:
     name: Skippable Job
     runs-on: ubuntu-latest
-    outputs:      
-      branch_name: ${{ env.branch_name }}
     if: "!contains(needs.pre_ci.outputs.commit_message, 'MAR-')"
     needs: pre_ci
     steps:
       - name: Checkout
-        run: echo ${{ env.branch_name }}
+        run: echo running on branch ${GITHUB_REF##*/}
           
   build:
     runs-on: ubuntu-latest
