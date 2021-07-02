@@ -1,7 +1,6 @@
-name: "Manual2222"
+name: "Manual"
 
 on:
-
   workflow_dispatch:
     inputs:
       branch:
@@ -16,11 +15,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-           ref: ${{ github.event.inputs.branch }}
-           fetch-depth: 0 
-        run: |
-          git checkout add
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'          
-          git reset --hard 'HEAD~1'
-          git push --force
+          path: main
+
+      - name: Checkout private tools
+        uses: actions/checkout@v2
+        with:
+          run: |
+            cd main
+            git checkout add
+            git config --global user.name 'github-actions[bot]'
+            git config --global user.email 'github-actions[bot]@users.noreply.github.com'          
+            git reset --hard 'HEAD~1'
+            git push --force
